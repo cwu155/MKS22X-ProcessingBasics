@@ -10,11 +10,13 @@ class Visualizer {
   float x, y;
   float [] values;
   float [] speeds;
+  int numBars = 40;
+  float width = 400.0/numBars;
   Visualizer(float x, float y) {
     this.x = x;
     this.y = y;
-    values = new float[10];
-    speeds = new float[10];
+    values = new float[numBars];
+    speeds = new float[numBars];
     for (int i = 0; i < values.length; i++) {
       values[i] = random(-99, 99);
       speeds[i] = random(2);
@@ -42,17 +44,15 @@ class Visualizer {
     //THESE ARE WRONG: They just illustrate how they could look
     //Width of the visualizer is 400!
     
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < numBars; i++){
       if (values[i] > 0){
         fill (255, 0, 0);
-        rect(x + i*40, y+100, 40, values[i]);
+        rect(x + i*width, y+100, width, values[i]);
       } else {
         fill (0, 255, 0);
-        rect(x + i*40, y+100, 40, values[i]);
+        rect(x + i*width, y+100, width, values[i]);
       }
     }
-
-  
   }
   void update() {
     //???WRITE THIS METHOD SECOND!!!
@@ -62,15 +62,14 @@ class Visualizer {
       if (values[i] >= 100 || values[i] <= -100){
       //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
          speeds[i] *= -1;
-      }
-      
+      }  
     }
   }
 }
 
 void setup() {
   size(600, 500);
-  v = new Visualizer(0, 0);
+  v = new Visualizer(20, 20);
 }
 void draw() {
   background(255);
