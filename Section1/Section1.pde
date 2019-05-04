@@ -45,15 +45,19 @@ class Visualizer {
     //Width of the visualizer is 400!
     
     for (int i = 0; i < numBars; i++){
-      if (values[i] > 0){
+      if (values[i] <= 100 && values[i] > 50){
         fill (255, 0, 0);
-        rect(x + i*width, y+100, width, values[i]);
-      } else {
+      } else if (values[i] <= 50 && values[i] > 0) {
+        fill (255, 165, 0);
+      } else if (values[i] <= 0 && values[i] > -50){
+        fill (255, 255, 0);
+      } else if (values[i] <= -50 && values[i] >= -100){
         fill (0, 255, 0);
-        rect(x + i*width, y+100, width, values[i]);
       }
-    }
+        rect(x + i*width, y+100, width, values[i]);
+     }
   }
+  
   void update() {
     //???WRITE THIS METHOD SECOND!!!
     for (int i = 0; i < values.length; i++) {
