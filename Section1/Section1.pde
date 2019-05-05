@@ -10,7 +10,7 @@ class Visualizer {
   float x, y;
   float [] values;
   float [] speeds;
-  int numBars = 40;
+  int numBars = 4;
   float width = 400.0/numBars;
   Visualizer(float x, float y) {
     this.x = x;
